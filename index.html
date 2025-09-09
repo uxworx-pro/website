@@ -1,1 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>UXWorx — Design That Works</title>
+  <meta name="description" content="UXWorx is a boutique UI/UX studio crafting clean, conversion-focused design for apps and websites." />
 
+  <!-- Open Graph -->
+  <meta property="og:title" content="UXWorx — Design That Works" />
+  <meta property="og:description" content="Clean, conversion-focused UI/UX for apps and websites." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://uxworx.pro/" />
+  <meta property="og:image" content="https://uxworx.pro/og.jpg" />
+
+  <!-- Favicon (inline SVG) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230A1421'/%3E%3Cpath d='M16 20l8 12-8 12h6l5-7.5L32 44h6l-8-12 8-12h-6l-5 7.5L22 20h-6z' fill='%2329C2B1'/%3E%3C/svg%3E" />
+
+  <!-- Tailwind (CDN for quick start) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: "#0A1421",
+            mist: "#F5F7FA",
+            stone: "#6B7280",
+            brand: {
+              DEFAULT: "#29C2B1",
+              dark: "#1FA394",
+            },
+          },
+          fontFamily: {
+            sans: ["Inter", "ui-sans-serif", "system-ui", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Apple Color Emoji", "Segoe UI Emoji"],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* Subtle focus ring for keyboard users */
+    :focus-visible { outline: 2px solid #29C2B1; outline-offset: 2px; }
+  </style>
+</head>
+<body class="bg-white text-ink font-sans antialiased">
+  <!-- Header -->
+  <header class="sticky top-0 z-30 bg-white/70 backdrop-blur border-b border-black/5">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="h-16 flex items-center justify-between">
+        <a href="#" class="flex items-center gap-2 group" aria-label="UXWorx home">
+          <!-- Mark -->
+          <div class="h-8 w-8 rounded-xl bg-ink grid place-items-center">
+            <svg width="16" height="16" viewBox="0 0 64 64" aria-hidden="true">
+              <path d="M16 20l8 12-8 12h6l5-7.5L32 44h6l-8-12 8-12h-6l-5 7.5L22 20h-6z" fill="#29C2B1"/>
+            </svg>
+          </div>
+          <span class="text-lg font-semibold tracking-tight">UXWorx</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-8 text-sm">
+          <a href="#work" class="hover:text-brand">Work</a>
+          <a href="#services" class="hover:text-brand">Services</a>
+          <a href="#process" class="hover:text-brand">Process</a>
+          <a href="#about" class="hover:text-brand">About</a>
+          <a href="#contact" class="inline-flex items-center gap-2 rounded-xl bg-ink text-white px-4 py-2 hover:bg-brand-dark transition">
+            Start a Project
+          </a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-mist to-white"></div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-20 sm:py-28">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl sm:text-5xl font-semibold leading-tight">
+          Design that works.<br class="hidden sm:block"/> For apps and the web.
+        </h1>
+        <p class="mt-5 text-lg text-stone">
+          We craft clean, conversion-focused UI/UX. From MVP wireframes to polished
+          design systems, we help teams move faster with confidence.
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a href="#contact" class="inline-flex justify-center rounded-xl bg-brand text-ink font-medium px-5 py-3 hover:bg-brand-dark/90 transition">
+            Get a Quote
+          </a>
+          <a href="#work" class="inline-flex justify-center rounded-xl border border-black/10 px-5 py-3 hover:border-ink/30">
+            See Work
+          </a>
+        </div>
+        <div class="mt-8 flex items-center gap-6 text-sm text-stone">
+          <span>Figma-first</span>
+          <span aria-hidden="true">•</span>
+          <span>Accessible by default</span>
+          <span aria-hidden="true">•</span>
+          <span>Design systems</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work (case study cards) -->
+  <section id="work" class="py-16 sm:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex items-end justify-between">
+        <h2 class="text-2xl sm:text-3xl font-semibold">Selected Work</h2>
+        <a href="#contact" class="text-sm hover:text-brand">Request full portfolio →</a>
+      </div>
+
+      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Card -->
+        <article class="group rounded-2xl border border-black/5 overflow-hidden hover:shadow-sm transition">
+          <div class="aspect-[4/3] bg-mist grid place-items-center">
+            <span class="text-stone">SaaS Dashboard</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-medium">Analytics SaaS</h3>
+            <p class="mt-2 text-sm text-stone">Complex data simplified into clear, actionable UI. +26% trial-to-paid.</p>
+          </div>
+        </article>
+
+        <article class="group rounded-2xl border border-black/5 overflow-hidden hover:shadow-sm transition">
+          <div class="aspect-[4/3] bg-mist grid place-items-center">
+            <span class="text-stone">Mobile App</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-medium">Fintech iOS</h3>
+            <p class="mt-2 text-sm text-stone">Onboarding re-imagined: friction down 41%, retention up 18%.</p>
+          </div>
+        </article>
+
+        <article class="group rounded-2xl border border-black/5 overflow-hidden hover:shadow-sm transition">
+          <div class="aspect-[4/3] bg-mist grid place-items-center">
+            <span class="text-stone">Marketing Site</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-medium">B2B Landing</h3>
+            <p class="mt-2 text-sm text-stone">Conversion-first redesign; clear messaging and trust anchors.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="py-16 sm:py-20 bg-mist">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl sm:text-3xl font-semibold">Services</h2>
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <div class="rounded-2xl bg-white p-6 border border-black/5">
+          <h3 class="font-medium">Product UI/UX</h3>
+          <p class="mt-2 text-sm text-stone">App & web interfaces, end-to-end flows, visual polish, accessibility.</p>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li>• MVPs & redesigns</li>
+            <li>• Interaction & motion</li>
+            <li>• Multi-platform patterns</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl bg-white p-6 border border-black/5">
+          <h3 class="font-medium">Design Systems</h3>
+          <p class="mt-2 text-sm text-stone">Tokens, components, docs, handoff. Scale with consistency.</p>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li>• Figma libraries</li>
+            <li>• Accessibility baked-in</li>
+            <li>• Dev-friendly specs</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl bg-white p-6 border border-black/5">
+          <h3 class="font-medium">Audits & Research</h3>
+          <p class="mt-2 text-sm text-stone">Heuristics, UX scorecards, quick wins, roadmap of improvements.</p>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li>• Usability reviews</li>
+            <li>• Competitive teardown</li>
+            <li>• Conversion insights</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section id="process" class="py-16 sm:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl sm:text-3xl font-semibold">Process</h2>
+      <ol class="mt-8 grid md:grid-cols-4 gap-6 text-sm">
+        <li class="rounded-2xl border border-black/5 p-5">
+          <p class="text-xs uppercase tracking-wide text-stone">01 — Discover</p>
+          <p class="mt-2 font-medium">Goals & users</p>
+          <p class="mt-1 text-stone">Scope, constraints, success metrics.</p>
+        </li>
+        <li class="rounded-2xl border border-black/5 p-5">
+          <p class="text-xs uppercase tracking-wide text-stone">02 — Prototype</p>
+          <p class="mt-2 font-medium">Wireframes → clicks</p>
+          <p class="mt-1 text-stone">Testable flows in days.</p>
+        </li>
+        <li class="rounded-2xl border border-black/5 p-5">
+          <p class="text-xs uppercase tracking-wide text-stone">03 — Design</p>
+          <p class="mt-2 font-medium">Visual system</p>
+          <p class="mt-1 text-stone">Tokens, components, states.</p>
+        </li>
+        <li class="rounded-2xl border border-black/5 p-5">
+          <p class="text-xs uppercase tracking-wide text-stone">04 — Handoff</p>
+          <p class="mt-2 font-medium">Dev-ready</p>
+          <p class="mt-1 text-stone">Specs, assets, guidance.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-16 sm:py-20 bg-mist">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl sm:text-3xl font-semibold">About</h2>
+      <div class="mt-6 grid lg:grid-cols-2 gap-8 text-stone">
+        <p>
+          UXWorx is a focused UI/UX practice helping founders and teams ship
+          confident product experiences. We combine fast iteration with design
+          discipline and accessibility from day one.
+        </p>
+        <p>
+          Tools we love: Figma, FigJam, Tokens Studio, Storybook. Handoffs include
+          component specs, motion guidelines, and pragmatic documentation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / CTA -->
+  <section id="contact" class="py-16 sm:py-20">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-2xl sm:text-3xl font-semibold">Have a project in mind?</h2>
+      <p class="mt-3 text-stone">
+        Tell us about your goals and timeline. We’ll reply with a tailored scope & quote.
+      </p>
+      <div class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="mailto:hello@uxworx.pro" class="rounded-xl bg-ink text-white px-5 py-3 hover:bg-brand-dark transition">hello@uxworx.pro</a>
+        <a href="https://cal.com/your-handle/intro" class="rounded-xl border border-black/10 px-5 py-3 hover:border-ink/30">Book an intro call</a>
+      </div>
+      <p class="mt-4 text-xs text-stone">Average response time: under 24 hours.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-black/5">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 text-sm flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="text-stone">&copy; <span id="y"></span> UXWorx. All rights reserved.</div>
+      <div class="flex items-center gap-4">
+        <a class="hover:text-brand" href="#">Privacy</a>
+        <a class="hover:text-brand" href="#">Terms</a>
+        <a class="hover:text-brand" href="https://linkedin.com">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+</body>
+</html>

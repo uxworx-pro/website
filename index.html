@@ -3,7 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UXWorx - Design that works. For apps and the web.</title>
+    <title>Design that works for apps and the web.</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+
     <style>
       * {
         margin: 0;
@@ -83,6 +88,7 @@
       }
 
       .nav-links a::after {
+        display: none;
         content: "";
         position: absolute;
         width: 0;
@@ -110,6 +116,9 @@
       .nav-links a:hover::after {
         width: 100%;
       }
+      .nav-links a.btn-secondary::after {
+        display: none;
+      }
 
       .cta-button {
         background: linear-gradient(
@@ -119,7 +128,7 @@
         );
         color: var(--black);
         padding: 0.75rem 1.5rem;
-        border-radius: 50px;
+        border-radius: 8px;
         text-decoration: none;
         font-weight: 600;
         transition: all 0.3s ease;
@@ -208,7 +217,7 @@
         bottom: 0;
         background: url("https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
           center/cover;
-        opacity: 0.1;
+        opacity: 0.2;
         z-index: -1;
       }
 
@@ -246,7 +255,7 @@
         color: var(--white);
         padding: 0.75rem 1.5rem;
         border: 2px solid var(--primary-gold);
-        border-radius: 50px;
+        border-radius: 8px;
         text-decoration: none;
         font-weight: 600;
         transition: all 0.3s ease;
@@ -338,15 +347,28 @@
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         transition: transform 0.3s ease;
       }
+      /* Remove underline and blue color for work items links */
+      .work-item a {
+        text-decoration: none; 
+        color: inherit;
+        display: block; 
+      }
+
+      .work-item a:hover {
+        color: inherit;
+      }
 
       .work-item img {
         width: 100%;
         height: 200px;
         object-fit: cover;
+        transition: transform 0.3s ease;
       }
 
       .work-item:hover {
-        transform: translateY(-5px);
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
 
       .work-info {
@@ -505,15 +527,17 @@
       }
 
       .process-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
+        display: flex;
+        justify-content: space-between;
+        position:relative;
+        align-items: center;
       }
 
       .process-step {
         text-align: center;
-        padding: 2rem;
+        padding-top: 0;
         position: relative;
+        z-index:1;
       }
 
       .process-number {
@@ -631,6 +655,7 @@
       @media (max-width: 768px) {
         .nav-links {
           display: none;
+          pointer-events: none;
           position: absolute;
           top: 100px;
           left: 0;
@@ -649,12 +674,28 @@
           z-index: 9999;
           text-align: center;
         }
+        /* Process Section - Mobile Fix */
+        @media (max-width: 768px) {
+          .process-grid {
+          flex-direction: column; 
+          align-items: center;    
+          gap: 2rem;              
+        }
 
+        .process-step {
+          text-align: center;     
+        }
+
+        .process-number {
+          margin-bottom: 1rem;    
+        }
+      }
         .nav-links.active {
           display: flex;
           transform: translateY(0);
           opacity: 1;
           visibility: visible;
+          pointer-events: auto;
         }
 
         .nav-links li {
@@ -766,20 +807,45 @@
         display: block;
         border-radius: 10px;
       }
+      .cta-button,
+      .btn-secondary {
+        min-width: 160px;
+        text-align: center;
+      }
+      .footer-section a i {
+        margin-right: 6px;
+        color: var(--primary-gold);
+      }
+      .footer-section a:hover i {
+        color: var(--white);
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .logo-img {
+        height: 35px; 
+        width: auto;
+      }
     </style>
   </head>
   <body>
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
       <div class="nav-container">
-        <a href="#home" class="logo">UXWorx</a>
+        <a href="#" class="logo">
+          <img src="images/UXWorx.png" class="logo-img">
+          UXWorx
+        </a>
         <ul class="nav-links">
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#work">Work</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#process">Process</a></li>
-          <li><a href="#contact" class="btn-secondary">Contact</a></li>
+          <li><a href="#contact" class="cta-button">Contact</a></li>
         </ul>
         <div
           class="mobile-menu-toggle"
@@ -797,14 +863,14 @@
     <section class="hero" id="home">
       <div class="container">
         <div class="hero-content">
-          <h1>UXWorx - Design that works. For apps and the web.</h1>
+          <h1>Design that works for apps and the web.</h1>
           <p>
             We craft clean, conversion-focused UI/UX. From MVP wireframes to
             polished design systems, we help teams move faster with confidence.
           </p>
           <div class="hero-buttons">
             <a href="#contact" class="cta-button">Get a Quote</a>
-            <a href="#work" class="btn-secondary">See Work</a>
+            <a href="#work" class="btn-secondary">Explore Work</a>
           </div>
         </div>
       </div>
@@ -853,77 +919,144 @@
           <div class="carousel-track" id="carouselTrack">
             <!-- Work Items -->
             <div class="work-item">
-              <img src="/images/betabuilder1.png" alt="Beta Builders" />
-              <div class="work-info">
-                <h3>Beta Builders</h3>
-                <p>
-                  A modern platform showcasing innovative web and software
-                  solutions.
-                </p>
+              <a href="https://betabuilders.org/" target="_blank" rel="noopener noreferrer">
+                <img src="/images/betabuilder1.png" alt="Beta Builders" />
+                <div class="work-info">
+                  <h3>Beta Builders</h3>
+                  <p>A modern platform showcasing innovative web and software solutions.</p>
               </div>
-            </div>
+            </a>
+          </div>
 
-            <div class="work-item">
+          <div class="work-item">
+            <a href="https://artout.site/" target="_blank" rel="noopener noreferrer">
               <img src="images/Artout1.png" alt="ArtOut" />
               <div class="work-info">
                 <h3>ArtOut</h3>
-                <p>
-                  An artistic and visually-driven site dedicated to creativity
-                  and exhibitions.
-                </p>
+                <p> An artistic and visually-driven site dedicated to creativity and exhibitions.</p>
               </div>
-            </div>
+            </a>
+          </div>
 
-            <div class="work-item">
+          <div class="work-item">
+            <a href="https://buildless.online/" target="_blank" rel="noopener noreferrer">
               <img src="images/buildless.png" alt="Buildless" />
               <div class="work-info">
                 <h3>Buildless</h3>
-                <p>
-                  A clean, minimal web presence emphasizing streamlined digital
-                  solutions.
-                </p>
+                <p> A clean, minimal web presence emphasizing streamlined digital solutions.</p>
               </div>
-            </div>
-
-            <!-- <div class="work-item">
-                <img src="images/carsales.png" alt="CarSales">
-                <div class="work-info">
-                    <h3>CarSales</h3>
-                    <p>Australia's leading platform for buying and selling cars online.</p>
-                </div>
-                </div>
- -->
-            <div class="work-item">
-              <img src="images/datasetlab.png" alt="DatasetLab" />
-              <div class="work-info">
-                <h3>DatasetLab</h3>
-                <p>
-                  An educational hub for sharing datasets and collaborative
-                  analysis.
-                </p>
-              </div>
-            </div>
-
-            <div class="work-item">
-              <img src="images/digitai.png" alt="DigitAI" />
-              <div class="work-info">
-                <h3>DigitAI Agency</h3>
-                <p>
-                  A sleek, agency-style website presenting AI-driven digital
-                  solutions.
-                </p>
-              </div>
-            </div>
+            </a>
           </div>
 
-          <button class="next" id="nextBtn">›</button>
+        <div class="work-item">
+          <a href="https://www.carsales.com.au/" target="_blank" rel="noopener noreferrer">
+            <img src="images/carsads.png" alt="CarsAds" />
+            <div class="work-info">
+              <h3>CarsAds</h3>
+              <p>A platform for buying and selling cars online efficiently and securely.</p>
+            </div>
+          </a>
         </div>
 
-        <div style="text-align: center; margin-top: 2rem">
-          <a href="#contact" class="cta-button">Request full portfolio →</a>
+        <div class="work-item">
+          <a href="https://gotjob.online/" target="_blank" rel="noopener noreferrer">
+            <img src="images/gotjob.png" alt="GotJob" />
+            <div class="work-info">
+              <h3>GotJob</h3>
+              <p>An online job portal connecting employers with talented candidates quickly.</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="work-item">
+          <a href="https://grasskarma.website/" target="_blank" rel="noopener noreferrer">
+            <img src="images/grasskarma.png" alt="GrassKarma" />
+            <div class="work-info">
+              <h3>GrassKarma</h3>
+              <p>A platform promoting eco-friendly initiatives and community sustainability projects.</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="work-item">
+          <a href="https://heartfull.online/" target="_blank" rel="noopener noreferrer">
+            <img src="images/heartfull.png" alt="HeartFull" />
+            <div class="work-info">
+              <h3>HeartFull</h3>
+              <p>A wellbeing platform supporting mental health and community care services.</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="work-item">
+          <a href="https://jobsearch.works/" target="_blank" rel="noopener noreferrer">
+            <img src="images/jobsearch.png" alt="JobSearch" />
+            <div class="work-info">
+              <h3>JobSearch</h3>
+              <p>A modern job search engine helping candidates find opportunities efficiently.</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="work-item">
+          <a href="https://talenthub.show/" target="_blank" rel="noopener noreferrer">
+            <img src="images/talenthub.png" alt="TalentHub" />
+            <div class="work-info">
+              <h3>TalentHub</h3>
+              <p>A showcase platform connecting creative talents with projects and employers.</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="work-item">
+          <a href="https://quicksite.space/" target="_blank" rel="noopener noreferrer">
+            <img src="images/quicksite.png" alt="QuickSite" />
+            <div class="work-info">
+              <h3>QuickSite</h3>
+              <p>A fast, user-friendly solution for quickly launching websites with minimal setup.</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="work-item">
+          <a href="https://seedstart.world/" target="_blank" rel="noopener noreferrer">
+            <img src="images/seedstart.png" alt="SeedStart" />
+            <div class="work-info">
+              <h3>SeedStart</h3>
+              <p>An innovation hub supporting startups and new ventures from idea to launch.</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="work-item">
+          <a href="https://datasetlab.org/" target="_blank" rel="noopener noreferrer">
+            <img src="images/datasetlab.png" alt="DatasetLab" />
+            <div class="work-info">
+              <h3>DatasetLab</h3>
+              <p>An educational hub for sharing datasets and collaborative analysis.</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="work-item">
+          <a href="https://digitai.agency/" target="_blank" rel="noopener noreferrer">
+            <img src="images/digitai.png" alt="DigitAI" />
+            <div class="work-info">
+              <h3>DigitAI Agency</h3>
+              <p>A sleek, agency-style website presenting AI-driven digital solutions.</p>
+            </div>
+          </a>
         </div>
       </div>
-    </section>
+
+      <button class="next" id="nextBtn"></button>
+      </div>
+
+      <div style="text-align: center; margin-top: 2rem">
+        <a href="#contact" class="cta-button">Request full portfolio →</a>
+      </div>
+    </div>
+  </section>
 
     <!-- Services Section -->
     <section class="services" id="services">
@@ -1016,11 +1149,12 @@
             </div>
           </div>
 
-          <a
-            href="mailto:hello@uxworx.pro?subject=Project Inquiry"
-            class="cta-button"
-            >Book an intro call</a
-          >
+          <a href="https://www.linkedin.com/company/uxworx"
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="cta-button">
+            Book an intro call
+            </a>
         </div>
       </div>
     </section>
@@ -1048,10 +1182,14 @@
           </div>
           <div class="footer-section">
             <h3>Contact</h3>
-            <a href="mailto:hello@uxworx.pro">hello@uxworx.pro</a><br />
-            <p>Remote-first, based in Australia</p>
-            <a href="https://linkedin.com" target="_blank">LinkedIn</a>
-          </div>
+            <a href="mailto:hello@uxworx.pro">
+              <i class="fas fa-envelope"></i> hello@uxworx.pro
+            </a><br />
+            <p><i class="fas fa-map-marker-alt" style="color: var(--primary-gold); margin-right: 5px;"></i> Remote-first, based in Australia</p>
+            <a href="https://www.linkedin.com/company/uxworx" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+        </div>
         </div>
         <div class="footer-bottom">
           <p>
